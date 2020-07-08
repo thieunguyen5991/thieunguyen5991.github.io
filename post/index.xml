@@ -137,5 +137,14 @@
       <description>Time is of the essence. Every day that a business is anything less then fully secure is a day exposed to hackers. It&amp;rsquo;s also another day that developers continue building applications without factoring security into their lifecycle.</description>
     </item>
     
+    <item>
+      <title>Tags plugins showcase</title>
+      <link>https://thieunguyen5991.github.io/2014/10/tags-plugins-showcase/</link>
+      <pubDate>Wed, 29 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thieunguyen5991.github.io/2014/10/tags-plugins-showcase/</guid>
+      <description>&lt;p&gt;This post is used to show how tag plugins are displayed. See &lt;a href=&#34;https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#tags&#34;&gt;docs&lt;/a&gt; for more info.&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

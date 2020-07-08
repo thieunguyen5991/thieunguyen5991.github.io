@@ -198,6 +198,16 @@ if (!doNotTrack) {
     </a>
   </li>
 
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://thieunguyen5991.github.io/projects">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-product-hunt"></i>
+      
+      <span class="sidebar-button-desc">Projects</span>
+    </a>
+  </li>
+
 
     </ul>
     <ul class="sidebar-buttons">
@@ -209,16 +219,6 @@ if (!doNotTrack) {
       <i class="sidebar-button-icon fa fa-lg fa-github"></i>
       
       <span class="sidebar-button-desc">GitHub</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://twitter.com/thieunguyen5991" target="_blank" rel="noopener">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
-      
-      <span class="sidebar-button-desc">Twitter</span>
     </a>
   </li>
 
@@ -310,38 +310,54 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Theres two strategies when you are developing, either you bolt on security, or you build it in. Lets start with defining those!</p>
+              
+
+<p>Theres two strategies when you are developing, either you bolt on security, or you build it in. Lets start with defining those!</p>
+
 <h2 id="bolt-on">Bolt on</h2>
+
 <p>Bolt on, its one of the remnants where the business part of a company is defining the purchase, implement and maintain of a product developed. By either restricting funding or time to market. Which is usually seen as a consequence of a Time-Quality-Material Triangle (TQM), and not a design goal of a application.
 One of the the pitfalls of bolted on security, is management overhead and costs. This is one of the risks that are often invisible, as they are not put into the &ldquo;initial cost-out&rdquo; but rather the maintenance after the product been shipped.
 Another reason that bolted on security exists is because developers today does not know how to properly do secure code, as well as they are not encouraged to learn.
 Properly writing secure code does not however start with the developers, but usually a lot earlier and higher up into the organization. it takes a decision from management. After, a project and budget need to be setup in order to properly define a Secure Development Lifecycle (SDL) framework and later implementation into the development organization.</p>
+
 <h2 id="built-in">Built in</h2>
+
 <p>In contrast to bolt on, where security usually comes in during or after a project has been shipped. Built in security is already defined even before an application is designed, by teaching the developers how to write secure code.
 And already in the design phase of an application, security requirements are on a high level being formed. That means, security is already in the loop even before the first line of code, epic, sprint is finished.
 To be able to properly build security into architecture and applications there must exist some corner stones of the framework.</p>
+
 <h4 id="knowledge">Knowledge</h4>
+
 <p>It all starts with the architects or developers, so the organization should prioritize to setup a knowledge sharing program. Also start incentivize developers to learn secure coding practices.</p>
+
 <h4 id="risk-analysis">Risk Analysis</h4>
+
 <p>Any new project should start with a solid risk analysis, but also if a finished product undergoes major changes. The outcome of that analysis should at least answer; classification of the information, the context of the risk, identification and assessment, mitigation and how to monitor. This should be done from a Business point of view, as it is that part of the organization that will probably own the final product, and therefor be responsible. The analysis should then be directly fed into the security requirements, which will establish a security baseline. and the information classification should be supported by the organizations information security guidelines.</p>
+
 <h4 id="development">Development</h4>
+
 <p>Developers usually don&rsquo;t go in blind and come up with a plan after the code is finished. Usually there is some high level structure, like functional and non functional requirements. The same principle applies when adding in security requirements, where they define some form or function of an application, of what is acceptable or not. Before deploying the product a security focused developer together with a architect should go through all the functional-, non functional- and security requirements, to get a final check that the finished product fulfills the requirements in a satisfactory way.</p>
+
 <h4 id="deployment">Deployment</h4>
+
 <p>Now deploying a application should always start with either an internal or external PenTest, this can be done by outsourcing, or have staff in house to perform it. Continuous automated security scans should also be done and the results should be reported to the development team, there&rsquo;s several hosted open source tools that can perform this task quite easily, as well as SaaS Applications since Cloud is a thing nowadays.</p>
+
 <h2 id="secure-development-lifecycle">Secure Development Lifecycle</h2>
-<p>Now hopefully OWASP<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> needs no introduction, but their project OpenSAMM<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> might.
+
+<p>Now hopefully OWASP<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> needs no introduction, but their project OpenSAMM<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> might.
 &hellip; to be continued&hellip;</p>
-<section class="footnotes" role="doc-endnotes">
-<hr>
+<div class="footnotes">
+
+<hr />
+
 <ol>
-<li id="fn:1" role="doc-endnote">
-<p><a href="www.owasp.org">www.owasp.org</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:2" role="doc-endnote">
-<p><a href="http://www.opensamm.org/">www.opensamm.org</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
+<li id="fn:1"><a href="www.owasp.org">www.owasp.org</a>
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2"><a href="http://www.opensamm.org/">www.opensamm.org</a>
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
 </ol>
-</section>
+</div>
 
               
             </div>
@@ -363,7 +379,7 @@ To be able to properly build security into architecture and applications there m
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://thieunguyen5991.github.io/2014/10/tags-plugins-showcase/" data-tooltip="Tags plugins showcase">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -437,7 +453,7 @@ To be able to properly build security into architecture and applications there m
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://thieunguyen5991.github.io/2014/10/tags-plugins-showcase/" data-tooltip="Tags plugins showcase">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>

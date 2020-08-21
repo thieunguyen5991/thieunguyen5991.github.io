@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>hardware on Thieu Nguyen&#39;s Blog</title>
-    <link>https://thieunguyen5991.github.io/tags/hardware/</link>
-    <description>Recent content in hardware on Thieu Nguyen&#39;s Blog</description>
+    <title>hardware on Thieu&#39;s Blog</title>
+    <link>https://thieu1995.github.io/tags/hardware/</link>
+    <description>Recent content in hardware on Thieu&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 01 Jun 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://thieunguyen5991.github.io/tags/hardware/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://thieu1995.github.io/tags/hardware/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Voltage glitching on the cheap</title>
-      <link>https://thieunguyen5991.github.io/2019/06/voltage-glitching-on-the-cheap/</link>
+      <link>https://thieu1995.github.io/2019/06/voltage-glitching-on-the-cheap/</link>
       <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/2019/06/voltage-glitching-on-the-cheap/</guid>
+      <guid>https://thieu1995.github.io/2019/06/voltage-glitching-on-the-cheap/</guid>
       <description>Stand back! We&amp;rsquo;re doing science! voltage glitching on an Arduino</description>
     </item>
     

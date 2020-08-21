@@ -1,184 +1,184 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Thieu Nguyen&#39;s Blog</title>
-    <link>https://thieunguyen5991.github.io/categories/</link>
-    <description>Recent content in Categories on Thieu Nguyen&#39;s Blog</description>
+    <title>Categories on Thieu&#39;s Blog</title>
+    <link>https://thieu1995.github.io/categories/</link>
+    <description>Recent content in Categories on Thieu&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 17 Jul 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://thieunguyen5991.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://thieu1995.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>trophy</title>
-      <link>https://thieunguyen5991.github.io/categories/trophy/</link>
+      <link>https://thieu1995.github.io/categories/trophy/</link>
       <pubDate>Fri, 17 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/trophy/</guid>
+      <guid>https://thieu1995.github.io/categories/trophy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Impacket</title>
-      <link>https://thieunguyen5991.github.io/categories/impacket/</link>
+      <link>https://thieu1995.github.io/categories/impacket/</link>
       <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/impacket/</guid>
+      <guid>https://thieu1995.github.io/categories/impacket/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Password Cracking</title>
-      <link>https://thieunguyen5991.github.io/categories/password-cracking/</link>
+      <link>https://thieu1995.github.io/categories/password-cracking/</link>
       <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/password-cracking/</guid>
+      <guid>https://thieu1995.github.io/categories/password-cracking/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pentest</title>
-      <link>https://thieunguyen5991.github.io/categories/pentest/</link>
+      <link>https://thieu1995.github.io/categories/pentest/</link>
       <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/pentest/</guid>
+      <guid>https://thieu1995.github.io/categories/pentest/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Redteam</title>
-      <link>https://thieunguyen5991.github.io/categories/redteam/</link>
+      <link>https://thieu1995.github.io/categories/redteam/</link>
       <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/redteam/</guid>
+      <guid>https://thieu1995.github.io/categories/redteam/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Elastic-co</title>
-      <link>https://thieunguyen5991.github.io/categories/elastic-co/</link>
+      <link>https://thieu1995.github.io/categories/elastic-co/</link>
       <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/elastic-co/</guid>
+      <guid>https://thieu1995.github.io/categories/elastic-co/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Homelab</title>
-      <link>https://thieunguyen5991.github.io/categories/homelab/</link>
+      <link>https://thieu1995.github.io/categories/homelab/</link>
       <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/homelab/</guid>
+      <guid>https://thieu1995.github.io/categories/homelab/</guid>
       <description></description>
     </item>
     
     <item>
       <title>VirtualMachines</title>
-      <link>https://thieunguyen5991.github.io/categories/virtualmachines/</link>
+      <link>https://thieu1995.github.io/categories/virtualmachines/</link>
       <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/virtualmachines/</guid>
+      <guid>https://thieu1995.github.io/categories/virtualmachines/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CTF</title>
-      <link>https://thieunguyen5991.github.io/categories/ctf/</link>
+      <link>https://thieu1995.github.io/categories/ctf/</link>
       <pubDate>Tue, 03 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/ctf/</guid>
+      <guid>https://thieu1995.github.io/categories/ctf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Exploit-Development</title>
-      <link>https://thieunguyen5991.github.io/categories/exploit-development/</link>
+      <link>https://thieu1995.github.io/categories/exploit-development/</link>
       <pubDate>Tue, 03 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/exploit-development/</guid>
+      <guid>https://thieu1995.github.io/categories/exploit-development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ROPEmporium</title>
-      <link>https://thieunguyen5991.github.io/categories/ropemporium/</link>
+      <link>https://thieu1995.github.io/categories/ropemporium/</link>
       <pubDate>Tue, 03 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/ropemporium/</guid>
+      <guid>https://thieu1995.github.io/categories/ropemporium/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hardware</title>
-      <link>https://thieunguyen5991.github.io/categories/hardware/</link>
+      <link>https://thieu1995.github.io/categories/hardware/</link>
       <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/hardware/</guid>
+      <guid>https://thieu1995.github.io/categories/hardware/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hackthebox</title>
-      <link>https://thieunguyen5991.github.io/categories/hackthebox/</link>
+      <link>https://thieu1995.github.io/categories/hackthebox/</link>
       <pubDate>Fri, 27 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/hackthebox/</guid>
+      <guid>https://thieu1995.github.io/categories/hackthebox/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Writeup</title>
-      <link>https://thieunguyen5991.github.io/categories/writeup/</link>
+      <link>https://thieu1995.github.io/categories/writeup/</link>
       <pubDate>Fri, 27 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/writeup/</guid>
+      <guid>https://thieu1995.github.io/categories/writeup/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Development</title>
-      <link>https://thieunguyen5991.github.io/categories/development/</link>
+      <link>https://thieu1995.github.io/categories/development/</link>
       <pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/development/</guid>
+      <guid>https://thieu1995.github.io/categories/development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>owasp</title>
-      <link>https://thieunguyen5991.github.io/categories/owasp/</link>
+      <link>https://thieu1995.github.io/categories/owasp/</link>
       <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/owasp/</guid>
+      <guid>https://thieu1995.github.io/categories/owasp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>security</title>
-      <link>https://thieunguyen5991.github.io/categories/security/</link>
+      <link>https://thieu1995.github.io/categories/security/</link>
       <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/security/</guid>
+      <guid>https://thieu1995.github.io/categories/security/</guid>
       <description></description>
     </item>
     
     <item>
       <title>about-me</title>
-      <link>https://thieunguyen5991.github.io/categories/about-me/</link>
+      <link>https://thieu1995.github.io/categories/about-me/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/about-me/</guid>
+      <guid>https://thieu1995.github.io/categories/about-me/</guid>
       <description></description>
     </item>
     
     <item>
       <title>projects</title>
-      <link>https://thieunguyen5991.github.io/categories/projects/</link>
+      <link>https://thieu1995.github.io/categories/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://thieunguyen5991.github.io/categories/projects/</guid>
+      <guid>https://thieu1995.github.io/categories/projects/</guid>
       <description></description>
     </item>
     

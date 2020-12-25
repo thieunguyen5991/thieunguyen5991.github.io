@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cite Score on Thieu&#39;s Blog</title>
+    <link>https://thieu1995.github.io/tags/cite-score/</link>
+    <description>Recent content in Cite Score on Thieu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://thieu1995.github.io/tags/cite-score/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Research</title>
+      <link>https://thieu1995.github.io/page/research/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thieu1995.github.io/page/research/</guid>
+      <description>Papers and Codes Conferences table {font-family: arial, sans-serif;border-collapse: collapse;width: 100%;}.table_header {border-bottom: 1px solid gray;border-top: 1px solid gray;}.table_header  td {font-weight: bold;}.table_tbody tr {background: white !important;}.table_tbody  .table_header {background: #f7f8f8 !important;}ID: 1A resource usage prediction system using functional-link and genetic algorithm neural network for multivariate cloud metricsAuthorsThieu Nguyen, Nhuan Tran, Binh Minh Nguyen, Giang NguyenConference2018 IEEE 11th conference on service-oriented computing and applications (SOCA)Ranking: CPublication Date: 2018/11/20Publisher: IEEELinks:Code--Latex--PDFID: 2Building resource auto-scaler with functional-link neural network and adaptive bacterial foraging optimizationAuthorsThieu Nguyen, Binh Minh Nguyen, Giang NguyenConferenceInternational Conference on Theory and Applications of Models of Computation (TAMC)Ranking: BPublication Date: 2019/4/13Publisher: Springer, ChamLinks:Code--Latex--PDFID: 3A New Workload Prediction Model Using Extreme Learning Machine and Enhanced Tug of War optimizationAuthorsThieu Nguyen, Bao Hoang, Giang Nguyen, Binh Minh NguyenConferenceThe 11th International Conference on Ambient Systems, Networks and Technologies (ANT)Ranking: BPublication Date: 2020/1/1Publisher: ElsevierLinks:Code--Latex--PDFID: 4EO-CNN: An Enhanced CNN Model Trained by Equilibrium Optimization for Traffic Transportation PredictionAuthorsThieu Nguyen, Giang Nguyen, Binh Minh NguyenConference24th International Conference on Knowledge-Based and Intelligent Information &amp;amp; Engineering Systems (KES)Ranking: BPublication Date: 2020/1/1Publisher: ElsevierLinks:Code--Latex--PDFJournals ID: 1Efficient time-series forecasting using neural network and opposition-based coral reefs optimizationAuthorsThieu Nguyen, Tu Nguyen, Binh Minh Nguyen, Giang NguyenJournalInternational Journal of Computational Intelligence SystemsDetailsPublication Date: 2019/11Publisher: Atlantis PressRanking:Q1IF = 2.</description>
+    </item>
+    
+  </channel>
+</rss>

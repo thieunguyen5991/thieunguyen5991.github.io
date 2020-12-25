@@ -328,26 +328,6 @@
   </url>
   
   <url>
-    <loc>https://thieu1995.github.io/tags/opensamm/</loc>
-    <lastmod>2018-03-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://thieu1995.github.io/categories/owasp/</loc>
-    <lastmod>2018-03-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://thieu1995.github.io/2018/03/sdl-bolt-on-or-built-in/</loc>
-    <lastmod>2018-03-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://thieu1995.github.io/categories/security/</loc>
-    <lastmod>2018-03-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://thieu1995.github.io/page/about-me/</loc>
   </url>
   
@@ -364,7 +344,35 @@
   </url>
   
   <url>
-    <loc>https://thieu1995.github.io/tags/library/</loc>
+    <loc>https://thieu1995.github.io/tags/cite-score/</loc>
+  </url>
+  
+  <url>
+    <loc>https://thieu1995.github.io/tags/code/</loc>
+  </url>
+  
+  <url>
+    <loc>https://thieu1995.github.io/tags/conferences/</loc>
+  </url>
+  
+  <url>
+    <loc>https://thieu1995.github.io/tags/impact-factor/</loc>
+  </url>
+  
+  <url>
+    <loc>https://thieu1995.github.io/tags/journals/</loc>
+  </url>
+  
+  <url>
+    <loc>https://thieu1995.github.io/tags/latex-source/</loc>
+  </url>
+  
+  <url>
+    <loc>https://thieu1995.github.io/tags/metaheuristics/</loc>
+  </url>
+  
+  <url>
+    <loc>https://thieu1995.github.io/tags/open-source/</loc>
   </url>
   
   <url>
@@ -376,7 +384,15 @@
   </url>
   
   <url>
+    <loc>https://thieu1995.github.io/tags/paper/</loc>
+  </url>
+  
+  <url>
     <loc>https://thieu1995.github.io/page/projects/</loc>
+  </url>
+  
+  <url>
+    <loc>https://thieu1995.github.io/tags/projects/</loc>
   </url>
   
   <url>
@@ -384,7 +400,23 @@
   </url>
   
   <url>
-    <loc>https://thieu1995.github.io/tags/python/</loc>
+    <loc>https://thieu1995.github.io/tags/python-flask/</loc>
+  </url>
+  
+  <url>
+    <loc>https://thieu1995.github.io/tags/q1/</loc>
+  </url>
+  
+  <url>
+    <loc>https://thieu1995.github.io/tags/ranking/</loc>
+  </url>
+  
+  <url>
+    <loc>https://thieu1995.github.io/page/research/</loc>
+  </url>
+  
+  <url>
+    <loc>https://thieu1995.github.io/categories/research/</loc>
   </url>
   
 </urlset>

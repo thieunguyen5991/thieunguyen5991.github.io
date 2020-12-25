@@ -300,15 +300,6 @@
     </item>
     
     <item>
-      <title>opensamm</title>
-      <link>https://thieu1995.github.io/tags/opensamm/</link>
-      <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://thieu1995.github.io/tags/opensamm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>about-me</title>
       <link>https://thieu1995.github.io/tags/about-me/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -318,11 +309,74 @@
     </item>
     
     <item>
-      <title>library</title>
-      <link>https://thieu1995.github.io/tags/library/</link>
+      <title>Cite Score</title>
+      <link>https://thieu1995.github.io/tags/cite-score/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://thieu1995.github.io/tags/library/</guid>
+      <guid>https://thieu1995.github.io/tags/cite-score/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>code</title>
+      <link>https://thieu1995.github.io/tags/code/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thieu1995.github.io/tags/code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>conferences</title>
+      <link>https://thieu1995.github.io/tags/conferences/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thieu1995.github.io/tags/conferences/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Impact Factor</title>
+      <link>https://thieu1995.github.io/tags/impact-factor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thieu1995.github.io/tags/impact-factor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>journals</title>
+      <link>https://thieu1995.github.io/tags/journals/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thieu1995.github.io/tags/journals/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>latex source</title>
+      <link>https://thieu1995.github.io/tags/latex-source/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thieu1995.github.io/tags/latex-source/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Metaheuristics</title>
+      <link>https://thieu1995.github.io/tags/metaheuristics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thieu1995.github.io/tags/metaheuristics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>open-source</title>
+      <link>https://thieu1995.github.io/tags/open-source/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thieu1995.github.io/tags/open-source/</guid>
       <description></description>
     </item>
     
@@ -336,11 +390,47 @@
     </item>
     
     <item>
-      <title>python</title>
-      <link>https://thieu1995.github.io/tags/python/</link>
+      <title>paper</title>
+      <link>https://thieu1995.github.io/tags/paper/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://thieu1995.github.io/tags/python/</guid>
+      <guid>https://thieu1995.github.io/tags/paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>projects</title>
+      <link>https://thieu1995.github.io/tags/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thieu1995.github.io/tags/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python-flask</title>
+      <link>https://thieu1995.github.io/tags/python-flask/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thieu1995.github.io/tags/python-flask/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Q1</title>
+      <link>https://thieu1995.github.io/tags/q1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thieu1995.github.io/tags/q1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ranking</title>
+      <link>https://thieu1995.github.io/tags/ranking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thieu1995.github.io/tags/ranking/</guid>
       <description></description>
     </item>
     

@@ -137,14 +137,5 @@
       <description>My writeup of the Hack the box Nibbles box&amp;hellip; Nibble nibble!</description>
     </item>
     
-    <item>
-      <title>SDL: Bolt on or Built in?</title>
-      <link>https://thieu1995.github.io/2018/03/sdl-bolt-on-or-built-in/</link>
-      <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://thieu1995.github.io/2018/03/sdl-bolt-on-or-built-in/</guid>
-      <description>Time is of the essence. Every day that a business is anything less then fully secure is a day exposed to hackers. It&amp;rsquo;s also another day that developers continue building applications without factoring security into their lifecycle.</description>
-    </item>
-    
   </channel>
 </rss>
